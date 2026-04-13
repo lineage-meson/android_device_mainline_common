@@ -1,0 +1,16 @@
+type hal_usb_impl, domain;
+type hal_usb_impl_exec, exec_type, vendor_file_type, file_type;
+
+hal_server_domain(hal_usb_impl, hal_usb)
+hal_server_domain(hal_usb_impl, hal_usb_gadget)
+init_daemon_domain(hal_usb_impl)
+
+set_prop(hal_usb_impl, vendor_usb_prop)
+
+create_dir_file(hal_usb_impl, configfs)
+
+r_dir_file(hal_usb_impl, sysfs_batteryinfo)
+r_dir_file(hal_usb_impl, sysfs_udc)
+
+rw_dir_file(hal_usb_gadget_default, functionfs)
+rw_dir_file(hal_usb_gadget_default, vendor_sysfs_typec)
